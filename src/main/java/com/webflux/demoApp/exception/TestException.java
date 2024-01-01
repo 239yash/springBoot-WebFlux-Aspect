@@ -1,0 +1,7 @@
+package com.webflux.demoApp.exception;
+
+public class TestException extends RuntimeException{
+    public TestException(String message) {
+        super(message);
+    }
+}
