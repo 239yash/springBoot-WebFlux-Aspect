@@ -14,7 +14,13 @@ public class TestController {
     private final TestService testService;
     @PostMapping
     public Mono<?> testMethod(@RequestBody Object requestObject) {
-        log.info("Request Body(Logged in method) - " + requestObject);
+        log.info("Request Body POST(Logged in method) - " + requestObject);
+        return testService.testMethod();
+    }
+
+    @PutMapping
+    public Mono<?> testPutMethod(@RequestBody Object requestObject) {
+        log.info("Request Body PUT(Logged in method) - " + requestObject);
         return testService.testMethod();
     }
 }
