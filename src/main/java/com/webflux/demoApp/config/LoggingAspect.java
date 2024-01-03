@@ -8,6 +8,7 @@ import org.aspectj.lang.reflect.MethodSignature;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.Arrays;
 
@@ -24,14 +25,18 @@ public class LoggingAspect {
             log.info("Test Test2");
             if (arg != null) {
                 log.info("Test Test3");
-//                if (Arrays
-//                        .stream(((MethodSignature) joinPoint.getSignature()).getMethod().getParameterAnnotations())
-//                        .flatMap(Arrays::stream)
-//                        .anyMatch(annotation -> annotation.annotationType().equals(RequestBody.class))) {
-//                    log.info("Request Body(Logged in Aspect) - " + arg);
-//                }
-                if (arg.getClass().isAnnotationPresent(PutMapping.class)) {
-                    log.info("Test Test4");
+                if (Arrays
+                        .stream(((MethodSignature) joinPoint.getSignature()).getMethod().getParameterAnnotations())
+                        .flatMap(Arrays::stream)
+                        .anyMatch(annotation -> annotation.annotationType().equals(RequestBody.class))) {
+                    log.info("Request Body(Logged in Aspect) - " + arg);
+                }
+
+                if (Arrays
+                        .stream(((MethodSignature) joinPoint.getSignature()).getMethod().getParameterAnnotations())
+                        .flatMap(Arrays::stream)
+                        .anyMatch(annotation -> annotation.annotationType().equals(RequestParam.class))) {
+                    log.info("Request Param(Logged in Aspect) - " + arg);
                 }
             }
         }

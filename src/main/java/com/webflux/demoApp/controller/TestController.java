@@ -19,8 +19,8 @@ public class TestController {
     }
 
     @PutMapping
-    public Mono<?> testPutMethod(@RequestBody Object requestObject) {
-        log.info("Request Body PUT(Logged in method) - " + requestObject);
+    public Mono<?> testPutMethod(@RequestBody Object requestObject, @RequestParam String testKey) {
+        log.info("Request Body PUT(Logged in method) - " + requestObject + " " + testKey);
         return testService.testMethod();
     }
 }
