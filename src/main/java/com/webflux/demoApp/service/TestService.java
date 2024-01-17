@@ -9,7 +9,8 @@ import reactor.core.publisher.Mono;
 @Slf4j
 public class TestService {
     public Mono<?> testMethod() {
-        return Mono.just("Test");
+        return Mono.error(new TestException("testing exception handling"));
+//        return Mono.just("Test");
 //        return testMethod2().map(data -> data + "test2");
     }
 
