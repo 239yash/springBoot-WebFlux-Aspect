@@ -1,5 +1,6 @@
 package com.webflux.demoApp.controller;
 
+import com.webflux.demoApp.model.TestRequestModel;
 import com.webflux.demoApp.service.TestService;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -13,7 +14,7 @@ import reactor.core.publisher.Mono;
 public class TestController {
     private final TestService testService;
     @PostMapping
-    public Mono<?> testMethod(@RequestBody Object requestObject) {
+    public Mono<?> testMethod(@RequestBody TestRequestModel requestObject) {
         log.info("Request Body POST(Logged in method) - " + requestObject);
         return testService.testMethod();
     }
